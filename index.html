@@ -15,9 +15,9 @@
     url.searchParams.set("ua", navigator.userAgent);
     url.searchParams.set("ref", document.referrer);
 
-    // Ambil lokasi user dari ipinfo.io via browser
+    // Dapatkan lokasi dengan ipinfo.io (PASTIKAN pakai token kamu sendiri!)
     try {
-      const res = await fetch("https://ipinfo.io/json?token=a1d073a9197a49"); // Buat token gratis di ipinfo.io
+      const res = await fetch("https://ipinfo.io/json?token=a1d073a9197a49"); // ← Ganti dengan token milikmu
       const data = await res.json();
       url.searchParams.set("city", data.city || "unknown");
       url.searchParams.set("country", data.country || "unknown");
@@ -26,12 +26,14 @@
       url.searchParams.set("country", "unknown");
     }
 
+    // Kirim data ke Web App
     const img = new Image();
     img.src = url.toString();
     img.style.display = "none";
     document.body.appendChild(img);
   });
 </script>
+
 
 
 
