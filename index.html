@@ -11,7 +11,7 @@
 <script>
   window.addEventListener("load", function () {
     const url = new URL("https://script.google.com/macros/s/AKfycbwKKISFeeY7YFMQcauIxzW5uDBMwqoOkBNO8AcG5SjHRmA79v1IJROkXueilWvCPnhUBw/exec");
-    url.searchParams.set("url", location.href);
+    url.searchParams.set("page", location.href);
     url.searchParams.set("ua", navigator.userAgent);
     url.searchParams.set("ref", document.referrer);
 
