@@ -9,19 +9,25 @@
 <body>
 
   
-<img src="https://script.google.com/macros/s/AKfycbwKKISFeeY7YFMQcauIxzW5uDBMwqoOkBNO8AcG5SjHRmA79v1IJROkXueilWvCPnhUBw/exec?page=https://sinino22.github.io/Nino-karlito.github.io/&ua=navigator&ref=document.referrer" style="display:none;" />
-<script>
-  const trackingURL = new URL("https://script.google.com/macros/s/AKfycbwKKISFeeY7YFMQcauIxzW5uDBMwqoOkBNO8AcG5SjHRmA79v1IJROkXueilWvCPnhUBw/exec");
-  trackingURL.searchParams.append("page", window.location.href);
-  trackingURL.searchParams.append("ua", navigator.userAgent);
-  trackingURL.searchParams.append("ref", document.referrer);
+// Ganti ID ini dengan ID Spreadsheet kamu
+const SPREADSHEET_ID = "https://docs.google.com/spreadsheets/d/1WPZ8w_OV9xjvUysLIJQcrX87GdL2yLX-SAET_h6MZXk/edit?hl=id&gid=0#gid=0";
 
-  // Load image to send data
-  const img = new Image();
-  img.src = trackingURL.toString();
-  img.style.display = "none";
-  document.body.appendChild(img);
-</script>
+function doGet(e) {
+  var ss = SpreadsheetApp.openById(https://docs.google.com/spreadsheets/d/1WPZ8w_OV9xjvUysLIJQcrX87GdL2yLX-SAET_h6MZXk/edit?hl=id&gid=0#gid=0);
+  var sheet = ss.getSheets()[0];
+
+  var url = e.parameter.url || "unknown";
+  var ua = e.parameter.ua || "unknown";
+  var ref = e.parameter.ref || "unknown";
+
+  sheet.appendRow([new Date(), url, ua, ref]);
+
+  // Return 1x1 pixel transparent
+  var img = UrlFetchApp.fetch("https://1x1px.me/FF000000");
+  return ContentService.createBinaryOutput(img.getBlob())
+    .setMimeType(ContentService.MimeType.PNG);
+}
+
 
 
   
