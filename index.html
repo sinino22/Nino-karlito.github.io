@@ -7,6 +7,23 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+
+  
+<script>
+  fetch("https://script.google.com/macros/s/AKfycbwKKISFeeY7YFMQcauIxzW5uDBMwqoOkBNO8AcG5SjHRmA79v1IJROkXueilWvCPnhUBw/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      page: window.location.href,
+      userAgent: navigator.userAgent,
+      referrer: document.referrer
+    }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+</script>
+
+  
   <header>
     <h1>Nino Karlito Parsaulian Simatupang</h1>
     <p>IT Data Engineer | Data Analyst | Cybersecurity Enthusiast</p>
