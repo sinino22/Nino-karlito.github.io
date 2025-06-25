@@ -9,19 +9,20 @@
 <body>
 
   
+<img src="https://script.google.com/macros/s/AKfycbwKKISFeeY7YFMQcauIxzW5uDBMwqoOkBNO8AcG5SjHRmA79v1IJROkXueilWvCPnhUBw/exec?page=https://sinino22.github.io/Nino-karlito.github.io/&ua=navigator&ref=document.referrer" style="display:none;" />
 <script>
-  fetch("https://script.google.com/macros/s/AKfycbwKKISFeeY7YFMQcauIxzW5uDBMwqoOkBNO8AcG5SjHRmA79v1IJROkXueilWvCPnhUBw/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      page: window.location.href,
-      userAgent: navigator.userAgent,
-      referrer: document.referrer
-    }),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  });
+  const trackingURL = new URL("https://script.google.com/macros/s/AKfycbwKKISFeeY7YFMQcauIxzW5uDBMwqoOkBNO8AcG5SjHRmA79v1IJROkXueilWvCPnhUBw/exec");
+  trackingURL.searchParams.append("page", window.location.href);
+  trackingURL.searchParams.append("ua", navigator.userAgent);
+  trackingURL.searchParams.append("ref", document.referrer);
+
+  // Load image to send data
+  const img = new Image();
+  img.src = trackingURL.toString();
+  img.style.display = "none";
+  document.body.appendChild(img);
 </script>
+
 
   
   <header>
