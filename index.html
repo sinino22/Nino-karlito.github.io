@@ -9,11 +9,22 @@
 <body>
   
 <script>
-  window.addEventListener("load", function () {
+  window.addEventListener("load", async function () {
     const url = new URL("https://script.google.com/macros/s/AKfycbwKKISFeeY7YFMQcauIxzW5uDBMwqoOkBNO8AcG5SjHRmA79v1IJROkXueilWvCPnhUBw/exec");
     url.searchParams.set("page", location.href);
     url.searchParams.set("ua", navigator.userAgent);
     url.searchParams.set("ref", document.referrer);
+
+    // Ambil lokasi user dari ipinfo.io via browser
+    try {
+      const res = await fetch("https://ipinfo.io/json?token=a1d073a9197a49"); // Buat token gratis di ipinfo.io
+      const data = await res.json();
+      url.searchParams.set("city", data.city || "unknown");
+      url.searchParams.set("country", data.country || "unknown");
+    } catch (e) {
+      url.searchParams.set("city", "unknown");
+      url.searchParams.set("country", "unknown");
+    }
 
     const img = new Image();
     img.src = url.toString();
@@ -21,6 +32,7 @@
     document.body.appendChild(img);
   });
 </script>
+
 
 
   <header>
