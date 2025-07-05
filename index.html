@@ -33,6 +33,42 @@
 </script>
 
 
+  
+<div id="welcomeMessage" style="font-weight: bold; font-size: 1.2em; margin-top: 1em;"></div>
+<script>
+  function typeText(element, text, speed = 50) {
+    let i = 0;
+    function typing() {
+      if (i < text.length) {
+        element.textContent += text.charAt(i);
+        i++;
+        setTimeout(typing, speed);
+      }
+    }
+    typing();
+  }
+
+  window.addEventListener("load", async function () {
+    let city = "kota kamu";
+    try {
+      const res = await fetch("https://ipinfo.io/json?token=a1d073a9197a49");
+      const data = await res.json();
+      city = data.city || "kota kamu";
+    } catch (e) {
+      console.warn("Gagal ambil data lokasi.");
+    }
+
+    const msg = `👋 Hai kamu yang lagi buka dari ${city}! Terima kasih sudah mampir ke portofolioku 🙌`;
+    const el = document.getElementById("welcomeMessage");
+    typeText(el, msg, 45);
+  });
+</script>
+
+
+  
+
+
+  
   <header>
     <h1>Nino Karlito Parsaulian Simatupang</h1>
     <p>IT Data Engineer | Data Analyst | Cybersecurity Enthusiast</p>
