@@ -42,9 +42,13 @@
     const popupText = document.getElementById("popup-text");
     popupText.textContent = `👋 Hai kamu yang lagi buka dari ${city}!`;
     popup.style.display = "block";
+
     setTimeout(() => {
       popup.style.display = "none";
     }, 6000);
+
+    // Tandai bahwa popup sudah pernah ditampilkan
+    localStorage.setItem("popupShown", "true");
   }
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -62,7 +66,7 @@
     let city = "kota kamu";
     let country = "negara kamu";
     try {
-      const res = await fetch("https://ipinfo.io/json?token=a1d073a9197a49"); // GANTI dengan token milikmu
+      const res = await fetch("https://ipinfo.io/json?token=5f9e7b42902f8d"); // GANTI token kamu
       const data = await res.json();
       city = data.city || city;
       country = data.country || country;
@@ -73,14 +77,20 @@
       url.searchParams.set("country", country);
     }
 
-    showPopup(city);
-
+    // Tracking tetap dikirim ke spreadsheet
     const img = new Image();
     img.src = url.toString();
     img.style.display = "none";
     document.body.appendChild(img);
+
+    // Cek apakah popup sudah pernah ditampilkan
+    const alreadyShown = localStorage.getItem("popupShown");
+    if (!alreadyShown) {
+      showPopup(city);
+    }
   });
 </script>
+
 
 </body>
 </html>
