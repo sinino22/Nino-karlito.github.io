@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+}
+
+nav {
+  background-color: #e0e0e0;
+  text-align: center;
+  padding: 10px 0;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+section.about {
+  padding: 20px;
+}
+
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #003366;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 9999;
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.popup .close {
+  float: right;
+  margin-left: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
